@@ -1,10 +1,43 @@
 [
 {
+  "model": "webapp.products",
+  "pk": 1,
+  "fields": {
+    "name": "Samsung monitor",
+    "description": "monitor from Samsung",
+    "status": "monitors",
+    "balance": 100,
+    "price": "250.00"
+  }
+},
+{
+  "model": "webapp.products",
+  "pk": 2,
+  "fields": {
+    "name": "GeForce 1080y",
+    "description": "very powerful graphics card",
+    "status": "video card",
+    "balance": 100,
+    "price": "200.00"
+  }
+},
+{
+  "model": "webapp.products",
+  "pk": 3,
+  "fields": {
+    "name": "intel CORE i3 8th Gen",
+    "description": "# of Cores\r\n2\r\n\r\n# of Threads\r\n4\r\n\r\nProcessor Base Frequency\r\n2.20 GHz\r\n\r\nMax Turbo Frequency\r\n3.40 GHz\r\n\r\nCache\r\n4 MB SmartCache\r\n\r\nBus Speed\r\n4 GT/s OPI\r\n\r\nTDP\r\n15 W\r\n\r\nConfigurable TDP-down Frequency\r\n800 MHz\r\n\r\nConfigurable TDP-down\r\n10 W",
+    "status": "processors",
+    "balance": 300,
+    "price": "350.00"
+  }
+},
+{
   "model": "auth.user",
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$150000$Uwtcal9SEJkn$k3n3w9Vsj1K8m3/WCb7G0fk6tkndKiAbkEu5yC2y5bY=",
-    "last_login": null,
+    "last_login": "2019-09-19T15:12:15.288Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",
