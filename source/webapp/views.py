@@ -5,16 +5,16 @@ from webapp.forms import ProductForm
 
 
 def index_views(request, *args, **kwargs):
-    articles = ProductsModel.objects.all()
+    products = ProductsModel.objects.all()
     return render(request, 'index.html', context={
-        'articles': articles
+        'articles': products
     })
 
 
 def product_view(request, pk):
-    article = get_object_or_404(ProductsModel, pk=pk)
+    product = get_object_or_404(ProductsModel, pk=pk)
     return render(request, 'product.html', context={
-        'article': article})
+        'article': product})
 
 
 def add_product(request, *args, **kwargs):
@@ -27,45 +27,45 @@ def add_product(request, *args, **kwargs):
     elif request.method == 'POST':
         form = ProductForm(data=request.POST)
         if form.is_valid():
-            article = ProductsModel.objects.create(
+            product = ProductsModel.objects.create(
             description=form.cleaned_data['description'],
             status=form.cleaned_data['status'],
             text=form.cleaned_data['text'],
             created_at=form.cleaned_data['created_at']
             )
-            return redirect('article', pk=article.pk)
+            return redirect('article', pk=product.pk)
         else:
             return render(request, 'add_product.html', context={'form': form})
 
 
 def delete(request, pk):
-    article = get_object_or_404(ProductsModel, pk=pk)
-    article.delete()
+    product = get_object_or_404(ProductsModel, pk=pk)
+    product.delete()
     return redirect('index')
 
 
 def edit_view(request, pk):
     try:
-        articles = get_object_or_404(ProductsModel, pk=pk)
+        products = get_object_or_404(ProductsModel, pk=pk)
         if request.method == 'GET':
             form = ProductForm(data={
-                'description': articles.description,
-                'status': articles.status,
-                'text': articles.text,
-                'created_at': articles.created_at
+                'description': products.description,
+                'status': products.status,
+                'text': products.text,
+                'created_at': products.created_at
             })
             return render(request, 'edit.html', context={
-                'articles': articles, 'form': form})
+                'articles': products, 'form': form})
         elif request.method == "POST":
             form = ProductForm(data=request.POST)
             if form.is_valid():
-                articles.description = form.cleaned_data['description']
-                articles.status = form.cleaned_data['status']
-                articles.text = form.cleaned_data['text']
-                articles.created_at = form.cleaned_data['created_at']
-                articles.save()
-                return redirect('article', pk=articles.pk)
+                products.description = form.cleaned_data['description']
+                products.status = form.cleaned_data['status']
+                products.text = form.cleaned_data['text']
+                products.created_at = form.cleaned_data['created_at']
+                products.save()
+                return redirect('article', pk=products.pk)
             else:
-                return render(request, 'edit.html', context={'form': form, 'articles': articles})
+                return render(request, 'edit.html', context={'form': form, 'articles': products})
     except ProductsModel.DoesNotExist:
         return HttpResponseNotFound("<h2>Article not found</h2>")
