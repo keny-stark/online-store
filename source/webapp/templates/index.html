@@ -1,0 +1,33 @@
+{% extends 'ready_view.html' %}
+{% block menu %}
+<li><a href="{% url 'article_create_view' %}" class="action-btn">+ Add List +</a></li>
+    <main>
+            <div class="button js-button-campaign_2 btn action-btn"><span>delete selected</span></div>
+    </main>
+{% endblock %}
+
+{% block content %}
+        <div class="home_div">
+            {% for product in products %}
+                <div class="boss_div">
+                <p class="for_checkbox"><input type="checkbox" name="{{ product.pk }}" value="{{ product.pk }}"></p>
+                    <h2>{{ product.name }}</h2>
+                    <a href="{% url 'article' article.pk %}" class="action-btn">More >>></a>
+                    <main>
+                            <div class="button js-button-campaign btn action-btn"><span>Delete</span></div>
+                    </main>
+                         <div class="overlay js-overlay-campaign">
+                                <div class="popup js-popup-campaign">
+                                      <form>
+                                          <h2>Are you sure you want to delete this?</h2>
+                                          <p><a href="{% url 'delete' pk=product.pk %}" class="action-btn">Yes</a></p>
+                                          <p><a class="action-btn object-tools js-close-campaign">No</a></p>
+                                        </form>
+                                    <div class="close-popup js-close-campaign"></div>
+                                </div>
+                            </div>
+                    <a href="{% url 'edit' pk=product.pk %}" class="action-btn">Edit</a>
+                </div>
+            {% endfor %}
+        </div>
+{% endblock %}

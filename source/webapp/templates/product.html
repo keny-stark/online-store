@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}List{% endblock %}
+{% block menu %}
+    <li><a href="{% url 'edit' product.pk %}" class="action-btn">Edit</a></li>
+    <li><a href="{% url 'delete' product.pk %}" class="action-btn">Delete</a></li>
+{% endblock %}
+{% block content %}
+    <h1>Description: {{ product.description }}</h1>
+    <p class="for_text">Text: {{ product.text }}</p>
+    <p>Status: <b>{{ product.status }}</b>, Date: <b>{{ product.prise }}</b></p>
+{% endblock %}
