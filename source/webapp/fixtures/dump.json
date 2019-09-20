@@ -33,6 +33,50 @@
   }
 },
 {
+  "model": "webapp.products",
+  "pk": 4,
+  "fields": {
+    "name": "hp pavilion",
+    "description": "core i3 8th gen\r\n128 ssd\r\n8 ram",
+    "status": "laptops",
+    "balance": 500,
+    "price": "600.00"
+  }
+},
+{
+  "model": "webapp.products",
+  "pk": 5,
+  "fields": {
+    "name": "HyperX Fury",
+    "description": "8GB DDR3 1866MHz CL10 DIMM Desktop Memory (HX318C10F/8)",
+    "status": "RAM",
+    "balance": 80,
+    "price": "100.00"
+  }
+},
+{
+  "model": "webapp.products",
+  "pk": 6,
+  "fields": {
+    "name": "GIGABYTE B450M",
+    "description": "DS3H (AMD Ryzen AM4/M.2/HMDI/DVI/USB 3.1/DDR4/Micro ATX/Motherboard)",
+    "status": "motherboards",
+    "balance": 70,
+    "price": "80.00"
+  }
+},
+{
+  "model": "webapp.products",
+  "pk": 7,
+  "fields": {
+    "name": "ASUS ZenBook Flip 14 UX461UA",
+    "description": "There's nothing ordinary about the gorgeous ZenBook Flip 14, but there's a whole lot of extraordinary. For a start, ZenBook Flip 14 is a creative powerhouse that's breathtakingly thin and unbelievably light, with the added versatility of a 360\u00b0-flippable touchscreen and ASUS Pen support to take you beyond the boundaries of a traditional laptop. With its 8th Generation Intel\u00ae Core\u2122 i7 quad-core processor, ZenBook Flip 14 gives you the raw power to effortlessly do whatever you need to do, and to do it quicker. Whether you want on-the-go creativity in tablet mode, portable document-crunching in laptop mode, or stress-busting relaxation in whatever mode, the powerful, versatile and creative ZenBook Flip 14 does it all, with extraordinarily refined elegance and style.",
+    "status": "other",
+    "balance": 1000,
+    "price": "1200.00"
+  }
+},
+{
   "model": "auth.user",
   "pk": 1,
   "fields": {
