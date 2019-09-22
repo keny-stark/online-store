@@ -3,12 +3,12 @@
     <li><a href="{% url 'add_product' %}" class="action-btn">+ Add List +</a></li>
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Category
+          Dropdown link
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            {% for product in products %}
-                <a class="dropdown-item" href="{% url 'category_view' product.status  %}">{{ product.status }}</a>
-            {% endfor %}
+          <a class="dropdown-item" name="class_product"  href="{% url 'index' %}">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
         </div>
     </li>
     <li>

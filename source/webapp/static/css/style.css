@@ -73,9 +73,9 @@ body:before {
     height: auto;
     margin: 40px 0 40px 0;
     justify-content: space-between;
-    border: solid 2px #6f6969;
-    background-color: #d8cabf;
-    border-radius: 25px;
+    border: solid 35px #86825852;
+    background-color: #4241418c;
+    border-radius: 3px;
 }
 .home_div{
     display: flex;

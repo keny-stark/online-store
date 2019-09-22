@@ -7,7 +7,7 @@ product_status_choices = [('monitors', 'monitors'), ('processors', 'processors')
                           ('cases', 'cases')]
 
 
-class ProductsModel(models.Model):
+class Products(models.Model):
     name = models.TextField(max_length=100, null=False, blank=False, verbose_name='Name')
     description = models.TextField(max_length=2000, null=True, blank=True, verbose_name='Description')
     status = models.TextField(max_length=40, null=False,

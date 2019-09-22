@@ -20,8 +20,9 @@ from webapp.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index_views, name='index'),
+    path('products/<status>/', category_view, name='category_view'),
     path('product/<int:pk>/', product_view, name='product_view'),
     path('product/add/', add_product, name='add_product'),
-    path('update/<int:pk>/', update_produkt, name='update_product'),
+    path('update/<int:pk>/', update_product, name='update_product'),
     path('delete/<int:pk>/', delete_product, name='delete_product'),
 ]
