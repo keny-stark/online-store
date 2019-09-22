@@ -2,15 +2,14 @@ from django.shortcuts import render, get_object_or_404, redirect
 from webapp.models import Products, product_status_choices
 from django.http import HttpResponseNotFound
 from webapp.forms import ProductForm
-from django.db.models import Q
 
 
 def index_views(request, *args, **kwargs):
     search = request.GET.get('search', '')
     if search:
-        products = Products.objects.filter(Q(name=search))
+        products = Products.objects.filter(name__icontains=search)
     else:
-        products = Products.objects.order_by('name')
+        products = Products.objects.order_by('status', 'name')
     return render(request, 'index.html', context={
         'products': products
     })
@@ -26,13 +25,13 @@ def category_view(request, status):
 def product_view(request, pk):
     product = get_object_or_404(Products, pk=pk)
     return render(request, 'product.html', context={
-        'article': product})
+        'product': product})
 
 
 def add_product(request, *args, **kwargs):
     if request.method == 'GET':
         form = ProductForm()
-        return render(request, 'product.html', context={
+        return render(request, 'add_product.html', context={
             'form': form,
             'product_status_choices': product_status_choices
         })
@@ -40,12 +39,13 @@ def add_product(request, *args, **kwargs):
         form = ProductForm(data=request.POST)
         if form.is_valid():
             product = Products.objects.create(
+            name=form.cleaned_data['name'],
             description=form.cleaned_data['description'],
             status=form.cleaned_data['status'],
-            text=form.cleaned_data['text'],
-            created_at=form.cleaned_data['created_at']
+            balance=form.cleaned_data['balance'],
+            price=form.cleaned_data['price']
             )
-            return redirect('article', pk=product.pk)
+            return redirect('product_view', pk=product.pk)
         else:
             return render(request, 'add_product.html', context={'form': form})
 
@@ -61,23 +61,25 @@ def update_product(request, pk):
         products = get_object_or_404(Products, pk=pk)
         if request.method == 'GET':
             form = ProductForm(data={
+                'name': products.name,
                 'description': products.description,
                 'status': products.status,
-                'text': products.text,
-                'created_at': products.created_at
+                'balance': products.balance,
+                'price': products.price
             })
             return render(request, 'edit.html', context={
-                'articles': products, 'form': form})
+                'products': products, 'form': form})
         elif request.method == "POST":
             form = ProductForm(data=request.POST)
             if form.is_valid():
+                products.name = form.cleaned_data['name']
                 products.description = form.cleaned_data['description']
                 products.status = form.cleaned_data['status']
-                products.text = form.cleaned_data['text']
-                products.created_at = form.cleaned_data['created_at']
+                products.balance = form.cleaned_data['balance']
+                products.price = form.cleaned_data['price']
                 products.save()
-                return redirect('article', pk=products.pk)
+                return redirect('product_view', pk=products.pk)
             else:
-                return render(request, 'edit.html', context={'form': form, 'articles': products})
+                return render(request, 'edit.html', context={'form': form, 'products': products})
     except Products.DoesNotExist:
         return HttpResponseNotFound("<h2>Article not found</h2>")

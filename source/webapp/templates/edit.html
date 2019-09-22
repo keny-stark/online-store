@@ -2,11 +2,11 @@
 
 {% block title %}Update product{% endblock %}
 {% block menu %}
-    <li><a href="{% url 'article' product.pk %}" class="action-btn">View</a></li>
+    <li><a href="{% url 'product_view' products.pk %}" class="action-btn">View</a></li>
 {% endblock %}
 {% block content %}
     <h1>Update product</h1>
-    <form method="POST" action="{% url "edit" product.pk %}" class="for_form">
-        {% include 'partial/article_form.html' with button_text="edit" %}
+    <form method="POST" action="{% url "update_product" products.pk %}" class="for_form">
+        {% include 'partial/product_form.html' with button_text="edit" %}
     </form>
 {% endblock %}

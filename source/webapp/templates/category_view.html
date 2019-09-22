@@ -1,16 +1,6 @@
 {% extends 'base.html' %}
 {% block menu %}
     <li><a href="{% url 'add_product' %}" class="action-btn">+ Add List +</a></li>
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown link
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" name="class_product"  href="{% url 'index' %}">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-    </li>
     <li>
         <form action="{% url 'index' %}">
             <input class="form-control" type="search" name="search" placeholder="Search">
