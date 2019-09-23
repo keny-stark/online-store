@@ -2,9 +2,9 @@
 {% block menu %}
     <li><a href="{% url 'add_product' %}" class="action-btn">+ Add List +</a></li>
     <li>
-        <form action="{% url 'index' %}">
+        <form action="{% url 'index' %}" class="form-inline my-2 my-lg-0">
             <input class="form-control" type="search" name="search" placeholder="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <button class="btn btn-outline-success btn4" type="submit">Search</button>
         </form></li>
 {% endblock %}
 

@@ -13,11 +13,3 @@ $(document).mouseup(function (e) {
 		$('.js-overlay-campaign').fadeOut();
 	}
 });
-
-$('.js-button-campaign_2').click(function() {
-	$('.js-overlay-campaign_2').fadeIn();
-	$('.js-overlay-campaign_2').addClass('disabled');
-});
-$('.js-close-campaign_2').click(function() {
-	$('.js-overlay-campaign_2').fadeOut();
-});

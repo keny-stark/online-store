@@ -52,8 +52,11 @@ def add_product(request, *args, **kwargs):
 
 def delete_product(request, pk):
     product = get_object_or_404(Products, pk=pk)
-    product.delete()
-    return redirect('index')
+    if request.method == 'GET':
+        return render(request, 'delete_product.html', context={'product': product})
+    elif request.method == 'POST':
+        product.delete()
+        return redirect('index')
 
 
 def update_product(request, pk):
